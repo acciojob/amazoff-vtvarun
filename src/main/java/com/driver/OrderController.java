@@ -115,7 +115,10 @@ public class OrderController {
     public ResponseEntity<String> getLastDeliveryTimeByPartnerId(@PathVariable String partnerId){
         logger.info("GET MAPPING : get-last-delivery-time : CONTROLLER");
         String time = orderService.getLastTime(partnerId);
+        logger.info("Just BEfore returning");
         return new ResponseEntity<>(time, HttpStatus.CREATED);
+
+
     }
 
     // checked and logged
