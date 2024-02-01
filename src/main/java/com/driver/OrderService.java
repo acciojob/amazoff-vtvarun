@@ -158,17 +158,23 @@ public class OrderService {
         List<Order> orders = orderRepository.getAllOrderByPartnerId(partnerId);
         int time  = 0;
         for(Order o : orders){
-            if(o.getDeliveryTime() > time){
-                time = o.getDeliveryTime();
+            if(o.getDeliveryTime() >= time){
+                time = Math.max(time,o.getDeliveryTime());
             }
         }
 
         //converting the integer time format back to HH:MM
         int hour = (time / 60);
         int min = (time % 60);
+        String hourString = "";
+        String minString = "";
 
         logger.info("Converted INTEGER INTO HH:MM");
-        return hour+":"+min;
+        if(hour < 10)  hourString = "0"+hour;
+
+        if(min < 10) minString = "0"+minString;
+
+        return hourString+":"+minString;
 
     }
 
