@@ -150,6 +150,7 @@ public class OrderService {
 
     public String getLastTime(String partnerId){
         logger.info("Entered Service Layer");
+
         if(!orderRepository.isPartnerIdValid(partnerId)) {
             logger.info("Partner ID Was invalid");
             return null;
@@ -158,9 +159,7 @@ public class OrderService {
         List<Order> orders = orderRepository.getAllOrderByPartnerId(partnerId);
         int time  = 0;
         for(Order o : orders){
-            if(o.getDeliveryTime() >= time){
-                time = Math.max(time,o.getDeliveryTime());
-            }
+            time = Math.max(time,o.getDeliveryTime());
         }
 
         //converting the integer time format back to HH:MM
