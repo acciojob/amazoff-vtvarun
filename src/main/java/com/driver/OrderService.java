@@ -166,13 +166,17 @@ public class OrderService {
         //converting the integer time format back to HH:MM
         int hour = (time / 60);
         int min = (time % 60);
-        String hourString = "";
-        String minString = "";
+        String hourString = hour+"";
+        String minString = min+"";
 
         logger.info("Converted INTEGER INTO HH:MM");
-        if(hour < 10)  hourString = "0"+hour;
+        if(hour < 10) {
+            hourString = "0"+hour;
+        }
 
-        if(min < 10) minString = "0"+minString;
+        if(min < 10) {
+            minString = "0"+min;
+        }
 
         return hourString+":"+minString;
 
