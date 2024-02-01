@@ -11,11 +11,10 @@ public class Order {
         //deliveryTime  = HH*60 + MM
         this.id = id;
         // the format of time in String should be (HH:MM) : is also a character, which needs to be ignored
-        int hour1 = (deliveryTime.charAt(0)-'0') * 10;
-        int hour2 = (deliveryTime.charAt(1)-'0');
-        int minute1 = (deliveryTime.charAt(3)-'0') * 10;
-        int minute2 = (deliveryTime.charAt(4)-'0');
-        this.deliveryTime = ((hour1 + hour2) * 60) + (minute1+minute2);
+        String[] timeArr=deliveryTime.split(":");
+        int hour=Integer.parseInt(timeArr[0]);
+        int min=Integer.parseInt(timeArr[1]);
+        this.deliveryTime=(hour*60)+min;
     }
 
     public String getId() {
