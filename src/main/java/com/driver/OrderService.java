@@ -13,8 +13,12 @@ import java.util.List;
 public class OrderService {
 
     Logger logger = LoggerFactory.getLogger(OrderService.class);
-    @Autowired
+
     OrderRepository orderRepository;
+
+    OrderService(){
+        orderRepository = new OrderRepository();
+    }
     public void addOrder(Order order){
         logger.info("Order Object Entered Service");
         orderRepository.addOrder(order);

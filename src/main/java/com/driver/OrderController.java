@@ -23,8 +23,8 @@ public class OrderController {
 
     Logger logger = LoggerFactory.getLogger(OrderController.class);
 
-    @Autowired
-    OrderService orderService;
+
+    OrderService orderService = new OrderService();
 
     // checked and logged
     @PostMapping("/add-order")
