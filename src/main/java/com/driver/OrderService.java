@@ -162,22 +162,9 @@ public class OrderService {
             time = Math.max(time,o.getDeliveryTime());
         }
 
-        //converting the integer time format back to HH:MM
-        int hour = (time / 60);
-        int min = (time % 60);
-        String hourString = hour+"";
-        String minString = min+"";
-
-        logger.info("Converted INTEGER INTO HH:MM");
-        if(hour < 10) {
-            hourString = "0"+hour;
-        }
-
-        if(min < 10) {
-            minString = "0"+min;
-        }
-
-        return hourString+":"+minString;
+        String hour= String.valueOf(time/60);
+        String min= String.valueOf(time%60);
+        return (hour.length()==1?("0"+hour):hour)+":"+(min.length()==1?("0"+min):min);
 
     }
 
